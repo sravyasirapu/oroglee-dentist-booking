@@ -1,74 +1,57 @@
 const express = require('express');
 const cors = require('cors');
-const { Sequelize, DataTypes } = require('sequelize');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// --- IMPORTANT: FIXES CORS ERRORS ---
+app.use(cors()); 
 app.use(express.json());
 
-// --- DATABASE SETUP ---
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database.sqlite',
-    logging: false // Keeps the terminal clean
+// --- MONGODB CONNECTION ---
+const mongoURI = "mongodb+srv://admin:admin123@cluster0.hzus12a.mongodb.net/?appName=Cluster0";
+
+mongoose.connect(mongoURI)
+    .then(() => console.log("Connected to MongoDB Cloud!"))
+    .catch(err => console.log("MongoDB Error: ", err));
+
+// --- SCHEMAS ---
+const dentistSchema = new mongoose.Schema({
+    name: String, qualification: String, experience: String,
+    clinicName: String, address: String, location: String, photo: String
 });
 
-// --- MODELS (Defined directly here for simplicity) ---
-const Dentist = sequelize.define('Dentist', {
-    name: DataTypes.STRING,
-    qualification: DataTypes.STRING,
-    experience: DataTypes.STRING,
-    clinicName: DataTypes.STRING,
-    address: DataTypes.STRING,
-    location: DataTypes.STRING,
-    photo: DataTypes.STRING
+const appointmentSchema = new mongoose.Schema({
+    patientName: String, age: Number, gender: String,
+    appointmentDate: String, dentistName: String, clinicName: String
 });
 
-const Appointment = sequelize.define('Appointment', {
-    patientName: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    gender: DataTypes.STRING,
-    appointmentDate: DataTypes.STRING,
-    dentistName: DataTypes.STRING,
-    clinicName: DataTypes.STRING
-});
-
-// Sync Database
-sequelize.sync().then(() => console.log("Database & Tables Ready!"));
+const Dentist = mongoose.model('Dentist', dentistSchema);
+const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 // --- API ROUTES ---
-
-// 1. GET all dentists
 app.get('/api/dentists', async (req, res) => {
-    const dentists = await Dentist.findAll();
+    const dentists = await Dentist.find();
     res.json(dentists);
 });
 
-// 2. POST (Add) a new dentist
 app.post('/api/dentists', async (req, res) => {
-    try {
-        const dentist = await Dentist.create(req.body);
-        res.status(201).json(dentist);
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
+    const dentist = new Dentist(req.body);
+    await dentist.save();
+    res.status(201).json(dentist);
 });
 
-// 3. GET all appointments (For Admin)
 app.get('/api/appointments', async (req, res) => {
-    const appointments = await Appointment.findAll();
+    const appointments = await Appointment.find();
     res.json(appointments);
 });
 
-// 4. POST (Book) an appointment
 app.post('/api/appointments', async (req, res) => {
-    try {
-        const appointment = await Appointment.create(req.body);
-        res.status(201).json(appointment);
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
+    const appointment = new Appointment(req.body);
+    await appointment.save();
+    res.status(201).json(appointment);
 });
 
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

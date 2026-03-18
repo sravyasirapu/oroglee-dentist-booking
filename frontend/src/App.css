@@ -207,3 +207,69 @@ body {
 .btn-cancel:hover {
   color: #ef4444;
 }
+
+/* ADMIN DASHBOARD STYLES */
+.admin-section {
+  padding: 20px;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.admin-header h1 {
+  font-size: 2.2rem;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* The Card holding the table */
+.admin-card {
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  border: 1px solid #f1f5f9;
+  overflow-x: auto; /* Scrollable on mobile */
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.modern-table th {
+  background: #f8fafc;
+  padding: 18px 15px;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.modern-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid #f8fafc;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.modern-table tr:hover {
+  background-color: #fdfdfd;
+}
+
+/* Nice Status Badge */
+.status-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
