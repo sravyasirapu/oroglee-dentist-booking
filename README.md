@@ -3,8 +3,8 @@
 A professional Full-Stack MERN application that allows patients to discover top dentists, book appointments instantly, and enables administrators to manage bookings through a dedicated dashboard.
 
 ## 🚀 Live Demo & Links
-- **Live Website:** [https://oroglee-dentist-booking-8jy3.vercel.app/]
-- **Backend API:** [Insert your Render URL here]
+- **Live Website:**  https://oroglee-dentist-booking-8jy3.vercel.app/
+- **Backend API:**   https://oroglee-dentist-booking-1.onrender.com
 
 ---
 
@@ -45,54 +45,39 @@ OroGlee_Project/
 │   └── package.json       # Frontend dependencies
 └── README.md              # Project documentation
 ```
+---
 
-⚙️ Local Setup Instructions
+## ⚙️ Local Setup Instructions
 1. Clone the repository
-code
-Bash
+```text
 git clone https://github.com/sravyasirapu/oroglee-dentist-booking.git
 cd oroglee-dentist-booking
+```
 2. Backend Setup
-code
-Bash
+```text
 cd backend
 npm install
 node server.js
+```
 Note: The backend connects to a live MongoDB Atlas cluster. Ensure your IP is whitelisted.
+
 3. Frontend Setup
-code
-Bash
+```text
 cd ../frontend
 npm install
 npm start
+```
 The app will be available at http://localhost:3000
-📡 API Endpoints
+
+
+## 📡 API Endpoints
+```text
 GET /api/dentists - Fetch all available dentists.
 POST /api/dentists - Add a new dentist to the system.
 GET /api/appointments - Retrieve all patient bookings.
 POST /api/appointments - Create a new appointment.
-👩‍💻 Author
+```
+## 👩‍💻 Author
 Sirapu Sravya
-MERN Stack Developer Aspirant
-GitHub Profile
-code
-Code
----
 
-### **Step 3: Update the Links**
-In the `README.md` file you just pasted:
-1.  **Replace** `[Insert your Vercel URL here]` with your live website link.
-2.  **Replace** `[Insert your Render URL here]` with your backend link.
-3.  **Replace** `[Insert your Loom/Video Link here]` with your screen recording link.
 
----
-
-### **Step 4: Push to GitHub (The Final Push!)**
-In your VS Code terminal (main folder):
-1.  `git add README.md`
-2.  `git commit -m "Docs: Added professional README"`
-3.  `git push origin main`
-
----
-
-### **YOU ARE OFFICIALLY FINISHED!** 🥳🏁🚀
