@@ -14,7 +14,7 @@ function App() {
   const [formData, setFormData] = useState({ patientName: '', age: '', gender: 'Male', appointmentDate: '' });
 
   // --- REPLACE THIS WITH YOUR ACTUAL RENDER LINK ---
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://oroglee-backend-sravya.onrender.com";
 
   useEffect(() => {
     fetchData();
