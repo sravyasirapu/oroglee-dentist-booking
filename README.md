@@ -1,6 +1,3 @@
-want simple copy-paste friendly README (no separated code blocks)
-
-
 # 🦷 OroGlee Dentist Appointment Booking Platform
 
 A professional Full-Stack MERN application that allows patients to discover top dentists, book appointments instantly, and enables administrators to manage bookings through a dedicated dashboard.
